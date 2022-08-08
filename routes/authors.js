@@ -32,9 +32,7 @@ app.get('/authors', (req, res) => {
   res.json(authors)
 })
 
-app.get('/', (req, res) => {
-  res.json("Authors API")
-})
+
 
 app.get('/authors/:id', (req, res) => {
   const authors = [
@@ -63,7 +61,7 @@ app.get('/authors/:id', (req, res) => {
       books: ["The Picture of Dorian Gray", "The Importance of Being Earnest"]
   },
   ]
-  res.json(authors.name, authors.nationality)
+  res.json(${req.params.name}, ${req.params.nationality})
 })
 
 app.get('/authors/:id/books', (req, res) => {
@@ -93,7 +91,8 @@ app.get('/authors/:id/books', (req, res) => {
       books: ["The Picture of Dorian Gray", "The Importance of Being Earnest"]
   },
   ]
-  res.json(authors.books)
+  // res.json(authors.books)
+  res.json(${req.params.books})
 })
 
 app.get('json//authors/:id/books', (req, res) => {
@@ -123,7 +122,12 @@ app.get('json//authors/:id/books', (req, res) => {
       books: ["The Picture of Dorian Gray", "The Importance of Being Earnest"]
   },
   ]
-  res.json(authors.name, authors.nationality)
+  // res.json(authors.name, authors.nationality)
+  res.json(${req.params.authors}, ${req.params.nationality})
+})
+
+app.get('*', (req, res) => {
+  res.send('All routes')
 })
 
 module.exports = app
